@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8" />
+
+</head>
+<body>
+	<div class="container">
+		<section class="errors">
+			<% if(errors) { %>
+				<ul>
+					<% for(let i=0; i < errors.length; i++){ %>
+						<li>
+							<%= errors[i].msg %>
+						</li>
+						<% } %>
+				</ul>
+				<% } %>
+		</section>
+		<h1>Logar</h1>
+		<form class="form" action="/autenticarusuario" method="post">
+			<input type="text" name="email" placeholder="Digite o email" value="<%= user.email %>">
+			<input type="password" name="password" placeholder="Digite a password" value="<%= user.password %>">
+			<button type="submit" value="enviar">Enviar</button>
+		</form>
+	</div>
+</body>
+
+</html>

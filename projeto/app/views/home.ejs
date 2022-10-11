@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Museu Virtual</title>
+    <link rel="stylesheet" type="text/css" href="styles/home.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                <%= user%>
+                    <li><a href='/'>Home</a></li>
+                    <%if (user==undefined) { %>
+                        <li><a href='/formulariodeautenticacao'>Login</a></li>
+                        <% } else{ %>  
+                            <li><a href='/deslogar'>Sair</a></li>
+                            <li><a href='/cadastrar'>Cadastrar novo ponto turistico</a></li>
+                         <% } %>
+                   <li><a href='/inserirusuario'>Insere Usuário</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1 class="title">Pontos turisticos</h1>
+        <div>
+            <%if (user==undefined) { %>
+            <% for (let i=0; i<paintings.length; i++) { %>
+                <div class="card">
+                    <img src="<%= paintings[i].urlimagem %>" class="card-image" alt="<%= paintings[i].nome %>">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="/obradearte?idpontoturistico=<%= paintings[i].idpontoturistico %>">
+                                <%= paintings[i].nome %>
+                            </a>
+                            <a href="/alterarobradearte?idpontoturistico=<%= paintings[i].idpontoturistico %>">
+                                <img src="images/editicon.svg" alt="Icone de alteração" class="card-change-icon" />
+                            </a>
+                        </h5>
+                        <p class="card-text">
+                            <%= paintings[i].endereco %>
+                        </p>
+                    </div>
+                </div>
+                <hr />
+                <% } %>
+                <% } else{ %>  
+                    <% for (let i=0; i<paintings.length; i++) { %>
+                        <div class="card">
+                            <img src="<%= paintings[i].urlimagem %>" class="card-image" alt="<%= paintings[i].nome %>">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="/obradearte?idpontoturistico=<%= paintings[i].idpontoturistico %>">
+                                        <%= paintings[i].nome %>
+                                    </a>
+                                </h5>
+                                <p class="card-text">
+                                   Endereço: <%= paintings[i].endereco %>
+                                </p>
+                                <a class="card-text" href="/alterarobradearte?idpontoturistico=<%= paintings[i].idpontoturistico %>">
+                                    editar
+                                </a>
+                                <br>
+                                <a class="card-text" href="/delete?idpontoturistico=<%= paintings[i].idpontoturistico%>">
+                                    excluir
+                                </a>
+                                <br>
+                                <a class="card-text" href="/obradearte?idpontoturistico=<%= paintings[i].idpontoturistico %>">Vizualizar Ponto turistico </a>
+                            </div>
+                        </div>
+                        <hr />
+                        <% } %>
+                 <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

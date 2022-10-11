@@ -1,0 +1,27 @@
+
+create database pontoturistico;
+use pontoturistico;
+
+CREATE TABLE users (
+    id int not null auto_increment primary key,
+    email varchar(200),
+    password varchar(200)
+);  
+
+create table pontoturistico(
+   idpontoturistico int not null auto_increment primary key,
+   nome varchar(200),
+   endereco varchar(200),
+   urlimagem varchar(200)
+);
+
+insert into pontoturistico (nome,endereco,urlimagem) 
+values('Cristo Redentor','Rio de Janeiro',
+'https://magazine.zarpo.com.br/wp-content/uploads/2018/09/25-pontos-turisticos-do-brasil-para-conhecer-agora-mesmo-2.jpg');
+
+
+
+
+
+
+
